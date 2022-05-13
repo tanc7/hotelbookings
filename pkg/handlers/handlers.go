@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"github.com/tanc7/go-course/models"
-	"github.com/tanc7/go-course/pkg/config"
-	"github.com/tanc7/go-course/pkg/render"
+	"github.com/tanc7/hotelbookings/models"
+	"github.com/tanc7/hotelbookings/pkg/config"
+	"github.com/tanc7/hotelbookings/pkg/render"
 	"net/http"
 )
 

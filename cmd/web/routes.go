@@ -3,8 +3,8 @@ package main
 import (
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
-	"github.com/tanc7/go-course/pkg/config"
-	"github.com/tanc7/go-course/pkg/handlers"
+	"github.com/tanc7/hotelbookings/pkg/config"
+	"github.com/tanc7/hotelbookings/pkg/handlers"
 	"net/http"
 )
 

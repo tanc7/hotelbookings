@@ -1,3 +1,7 @@
+# Second chapter of course
+
+Building a fake hotel bookings web app. 
+
 # Work in Progress in studying Golang properly
 
 Chang Tan<br>

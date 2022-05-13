@@ -3,8 +3,8 @@ package render
 import (
 	"bytes"
 	"fmt"
-	"github.com/tanc7/go-course/models"
-	"github.com/tanc7/go-course/pkg/config"
+	"github.com/tanc7/hotelbookings/models"
+	"github.com/tanc7/hotelbookings/pkg/config"
 	"html/template"
 	"log"
 	"net/http"

@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/alexedwards/scs/v2"
-	"github.com/tanc7/go-course/pkg/config"
-	"github.com/tanc7/go-course/pkg/handlers"
-	"github.com/tanc7/go-course/pkg/render"
+	"github.com/tanc7/hotelbookings/pkg/config"
+	"github.com/tanc7/hotelbookings/pkg/handlers"
+	"github.com/tanc7/hotelbookings/pkg/render"
 	"log"
 	"net/http"
 	"time"
