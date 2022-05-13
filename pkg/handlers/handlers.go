@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"github.com/tanc7/hotelbookings/models"
-	"github.com/tanc7/hotelbookings/pkg/config"
-	"github.com/tanc7/hotelbookings/pkg/render"
+	"github.com/tsawler/bookings-app/pkg/config"
+	"github.com/tsawler/bookings-app/pkg/models"
+	"github.com/tsawler/bookings-app/pkg/render"
 	"net/http"
 )
 
@@ -15,9 +15,11 @@ type Repository struct {
 	App *config.AppConfig
 }
 
-// NewRepo creates a new respoitory
+// NewRepo creates a new repository
 func NewRepo(a *config.AppConfig) *Repository {
-	return &Repository{App: a}
+	return &Repository{
+		App: a,
+	}
 }
 
 // NewHandlers sets the repository for the handlers
@@ -25,66 +27,50 @@ func NewHandlers(r *Repository) {
 	Repo = r
 }
 
-// The first arg specifies a "receiver" which is the instance of Repository struct, you need to set it to render.repo.repository in main because it specifies a receiver now.
+// Home is the handler for the home page
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	remoteIP := r.RemoteAddr
 	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 
-	render.RenderTemplate(w, "home.page.tmpl.html", &models.TemplateData{})
+	render.RenderTemplate(w, "home.page.tmpl", &models.TemplateData{})
 }
 
-//	fmt.Fprintf(w, "This is the homepage")
-//}
-
-//About is /about path
+// About is the handler for the about page
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	// perform some logic
-	// send data to template
 	stringMap := make(map[string]string)
-	stringMap["test"] = "Hello, again."
+	stringMap["test"] = "Hello, again"
 
 	remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
 	stringMap["remote_ip"] = remoteIP
 
-	// send data to template
-	render.RenderTemplate(w, "about.page.tmpl.html", &models.TemplateData{
+	// send data to the template
+	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
 		StringMap: stringMap,
 	})
-
 }
 
-//sum := addValues(2, 2)
-//fmt.Fprintf(w, "This is the About page")
-////fmt.Fprintf(w, "The sum of these values is %d", sum)
-//_, _ = fmt.Fprintf(w, fmt.Sprintf("This is the about page and 2 + 2 = %d", sum))
+// Reservation renders the make a reservation page and displays form
+func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "make-reservation.page.tmpl", &models.TemplateData{})
+}
 
-//func AddValues(x, y int) (int, error) {
-//	//var sum int
-//	//sum = x + y
-//	var sum int
-//	sum = x + y
-//	return sum, nil
-//}
-//addValues returns x + y
-//func addValues(x, y int) int {
-//	return x + y
-//}
-//
-//func Divide(w http.ResponseWriter, r *http.Request) {
-//	f, err := divideValues(100.0, 0.0)
-//	if err != nil {
-//		fmt.Fprintf(w, "Cannot by divide by 0")
-//		return
-//	}
-//
-//	fmt.Fprintf(w, fmt.Sprintf("%f divided by %f is %f", 100.0, 0.0, f))
-//}
-//
-//func divideValues(x, y float32) (float32, error) {
-//	if y <= 0 {
-//		err := errors.New("Cannot divide by zero")
-//		return 0, err
-//	}
-//	result := x / y
-//	return result, nil
-//}
+// Generals renders the room page
+func (m *Repository) Generals(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "generals.page.tmpl", &models.TemplateData{})
+}
+
+// Majors renders the room page
+func (m *Repository) Majors(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "majors.page.tmpl", &models.TemplateData{})
+}
+
+// Availability renders the search availability page
+func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "search-availability.page.tmpl", &models.TemplateData{})
+}
+
+// Contact renders the contact page
+func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
+}
