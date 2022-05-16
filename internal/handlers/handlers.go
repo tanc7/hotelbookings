@@ -3,9 +3,9 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/tanc7/hotelbookings/pkg/config"
-	"github.com/tanc7/hotelbookings/pkg/models"
-	"github.com/tanc7/hotelbookings/pkg/render"
+	"github.com/tanc7/hotelbookings/internal/config"
+	"github.com/tanc7/hotelbookings/internal/models"
+	"github.com/tanc7/hotelbookings/internal/render"
 	"log"
 	"net/http"
 )
