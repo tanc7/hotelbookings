@@ -88,12 +88,12 @@ type jsonResponse struct {
 
 // AvailabilityJSON handles request for availability and send JSON response
 func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
-	resp := jsonResponse{OK: true, Message: "Available!"}
+	resp := jsonResponse{OK: false, Message: "Available!"}
 	out, err := json.MarshalIndent(resp, "", "    ")
 	if err != nil {
 		log.Println(err)
 	}
-	log.Println(string(out))
+	//log.Println(string(out))
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(out)
 }
